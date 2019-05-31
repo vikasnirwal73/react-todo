@@ -1,0 +1,28 @@
+$theme-colors: (
+  "primary": #15548b,
+  "danger": #942b26
+);
+
+
+// @import '../../node_modules/fontawesome/'
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+.form-control {
+  height: auto;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.todoList .fas {
+  padding: 0;
+  font-size: 26px;
+  cursor: pointer;
+  margin: 0 0 0 15px;
+}
+
+
+
+
