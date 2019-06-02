@@ -11,24 +11,6 @@ export default class TodoApp extends React.Component {
         }
     }
 
-    submitHandler = (e) => {
-        e.preventDefault();
-        const newTodoText = e.target['todoText'].value;
-
-        if (newTodoText) {
-            this.setState((prevState) => {
-                console.log(prevState);
-                return {
-                    todos: [
-                        ...prevState.todos,
-                        {
-                            task: newTodoText,
-                            done: false
-                        }]
-                }
-            })
-        }
-    }
 
     render() {
         return (

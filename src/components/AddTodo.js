@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { addTodo } from './../store/actions';
 
-export default class AddTodo extends React.Component {
+class AddTodo extends React.Component {
 
     constructor(props) {
         super(props);
@@ -15,11 +17,18 @@ export default class AddTodo extends React.Component {
             newTodo
         });
     }
+    submitHandler = e => {
+        e.preventDefault();
+        var text = e.target['todoText'].value;
+        if(text) {
+            this.props.addTodo(text);
+        }
+    }
 
     render() {
         return (
             <div className="addTodo">
-                <form className="row" onSubmit={this.props.submitHandler} autoComplete="off">
+                <form className="row" onSubmit={this.submitHandler} autoComplete="off">
                     <div className="form-group col-md-8 offset-md-2">
                         <input onChange={this.handleChange} type="text" name="todoText" placeholder="Enter new todo" className="form-control" />
                     </div>
@@ -31,3 +40,15 @@ export default class AddTodo extends React.Component {
         );
     }
 }
+
+
+const mapStateToProps = (state) => {
+    return {
+        state: state
+    }
+}
+const mapDispatchToProps = dispatch => ({
+    addTodo: task => dispatch(addTodo(task))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddTodo)
